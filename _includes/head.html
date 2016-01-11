@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="7giA2yYjj17eA4U3UGM3jsmcoT78xPMKdc_IEWgxU-M" />
+
+    <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.mission }}{% endif %}">
+
+
+    <link rel="stylesheet" href="{{ '/assets/css/materialize.css' | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ '/assets/css/materialize.index.css' | prepend: site.baseurl }}">
+
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <script type="application/ld+json">    
+    { "@context" : "http://schema.org",
+      "@type" : "Organization",
+      "logo": "{{ site.url | prepend: site.baseurl }}/assests/img/{{ site.logo }}",
+      "name" : "{{ site.title }}",
+      "legalName" : "{{ site.name }}",
+      "description" : "{{ site.mission }}",
+      "foundingDate" : "1931",
+      "areaServed" : "Colorado",
+      "url" : "{{ site.url | prepend: site.base url }}",
+      "subOrganization" : [
+        "COABE",
+        "MPAEA"
+      ],
+      "sameAs" : [{% for media in site.social_media %}{% if forloop.last == false %}
+        "{{ media.url }}",{% else %}      
+        "{{ media.url }}"{% endif %}{% endfor %}
+      ]
+    }
+    </script>
+  </head>
+<!-- END head include -->

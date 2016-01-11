@@ -1,0 +1,23 @@
+{% for include in page.includes %}
+{% if include == "links_featured" %}
+
+<ul class="collection with-header hoverable">
+  <li class="collection-header">  
+    <h5>Featured Links</h5>
+  </li>
+  
+  {% for data in site.data.Page_Data_-_Link_Sharing %}
+  {% if data.Featured == "TRUE" %}
+  <a href="{{ data.Website-URL }}" class="collection-item avatar">
+    <i class="left material-icons circle teal">link</i>
+    <strong class="title truncate">{{ data.Short-Name }}</strong>
+    <span class="light">{{ data.Name }}<br />
+    submitted by: {{ site.Name }}</span>
+  </a>
+  
+  {% endif %}
+  {% endfor%}
+</ul>
+
+{% endif %}
+{% endfor %}

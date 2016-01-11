@@ -1,0 +1,40 @@
+{% include head.html %}
+
+<body>
+  {% include navbar-dynamic.html %}
+
+  <div class="site-wrapper">
+    {{ content }}
+
+    <section class="section grey darken-2">
+      <div class="row">
+        <div class="col s12 l10 offset-l1 center-align">
+          
+          {% for page in site.pages %}
+          {% if page.footer_menu == true %}
+          <article style="display:inline-block !important; padding: 0 0.75rem !important;">
+            <div class="card center hoverable waves-effect waves-dark">
+              <a href="{{ page.url | prepend: site.baseurl }}">
+                <div class="card-image valign-wrapper grey" style="height:200px; width:200px">
+                  <i class="small material-icons white-text tooltipped" data-position="left" data-tooltip="View {{ page.title }}" style="position: absolute; right: 0">launch</i>
+                  <i class="container medium material-icons grey-text text-lighten-3">{{ page.icon }}</i>
+                  <span class="card-title">{{ page.title }}</span>
+                </div>
+              </a>
+            </div>
+          </article>
+          
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    <!-- END links to collections -->
+
+    {% include fixed-action-button.html %}
+
+    {% include footer.html %}
+
+  </div>
+</body>
+</html>

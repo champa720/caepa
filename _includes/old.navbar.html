@@ -1,0 +1,119 @@
+<div class="navbar-fixed">
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper">
+      <a class="brand-logo" href="{{ site.url | prepend: site.baseurl }}" id="logo-container">
+        <img class="left" alt="Logo" src="{{ site.baseurl }}/assets/img/{{ site.logo }}" />
+        <strong>&ensp;{{ site.title }}</strong>
+      </a>
+      
+      <!-- Navigation -->
+      <ul class="right hide-on-med-and-down">
+        {% for nav in site.data.navbar %}
+        {% if nav.subcategories != null %}
+
+        <!-- with Subcategories -->
+        <li>
+          <a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown-{{ nav.title }}">
+            <i class="material-icons">{{ nav.icon }}</i>
+          </a>
+        </li>
+        
+        <!-- Dropdown Structure -->
+        <ul id="dropdown-{{ nav.title }}" class="dropdown-content">
+          {% for subcategory in nav.subcategories %}
+          <!-- Sets Subcategory Active -->
+          {% if subcategory.subtitle == page.name %}
+          <li class="active">
+            <a class="waves-effect waves-dark" href="{{ subcategory.suburl | prepend: site.baseurl | prepend: site.url }}">{{ subcategory.subtitle }}</a>
+          </li>
+          <li class="divider"></li>
+          {% else %}
+          <li>
+            <a class="waves-effect waves-dark" href="{{ subcategory.suburl | prepend: site.baseurl | prepend: site.url }}">{{ subcategory.subtitle }}</a>
+          </li>
+          <li class="divider"></li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+        
+        <!-- Sets Active -->
+        {% elsif nav.title == page.title %}
+        <li class="active">
+          <a class="waves-effect waves-dark" href="{{ nav.url | prepend: site.baseurl | prepend: site.url }}">
+            <i class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{ nav.title }}">{{ nav.icon }}</i>
+          </a>
+        </li>
+        
+        <!-- w/o Subcategories -->
+        {% else %}
+        <li>
+          <a class="waves-effect waves-dark" href="{{ nav.urll | prepend: site.baseurl | prepend: site.ur }}">
+            <i class="material-icons tooltipped" data-position="bottom" data-delay="0" data-tooltip="{{ nav.title }}">{{ nav.icon }}</i>
+          </a>
+        </li>
+        
+        {% endif %}
+        {% endfor %}
+      </ul><!-- END Navigation -->
+      
+      <!-- Navigation Mobile -->
+      <ul class="side-nav" id="nav-mobile">
+        <li>
+          <a href="#!" id="logo-container">
+            <img class="left" alt="Logo" src="{{ site.baseurl }}/assets/img/{{ site.logo }}" />
+            <i class="material-icons right">close</i>
+            <strong>&ensp;{{ site.title }}</strong>
+          </a>
+        </li>
+        <li class="divider"></li>
+
+        {% for nav in site.data.navbar %}
+        {% if nav.subcategories != null %}
+
+        <!-- with Subcategories -->
+        <li class="divider"></li>
+        <!--li><a><i class="material-icons left">arrow_drop_down</i>{{ nav.title }}</a></li-->
+        
+        <!-- Subcategories Structure -->
+        <ul>
+          {% for subcategory in nav.subcategories %}
+          <!-- Sets Subcategory Active -->
+          {% if subcategory.subtitle == page.name %}
+          <li class="active">
+            <a class="waves-effect waves-dark" href="{{ subcategory.suburl | prepend: site.baseurl | prepend: site.url }}"><i class="material-icons left">{{ subcategory.subicon }}</i>{{ subcategory.subtitle }}</a>
+          </li>
+          {% else %}
+          <li>
+            <a class="waves-effect waves-dark" href="{{ subcategory.suburl | prepend: site.baseurl | prepend: site.url }}"><i class="material-icons left">{{ subcategory.subicon }}</i>{{ subcategory.subtitle }}</a>
+          </li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+        
+        <!-- Sets Active -->
+        {% elsif nav.title == page.title %}
+        <li class="active">
+          <a class="waves-effect waves-dark" href="{{ nav.url | prepend: site.baseurl | prepend: site.url }}">
+            <i class="material-icons left">{{ nav.icon }}</i>{{ nav.title }}
+          </a>
+        </li>
+        
+        <!-- w/o Subcategories -->
+        {% else %}
+        <li>
+          <a class="waves-effect waves-dark" href="{{ nav.url | prepend: site.baseurl | prepend: site.url }}">
+            <i class="material-icons left">{{ nav.icon }}</i>{{ nav.title }}
+          </a>
+        </li>
+
+        {% endif %}
+        {% endfor %}
+
+      </ul><!-- END Navigation Mobile -->
+      
+      <a class="button-collapse waves-effect waves-dark" data-activates="nav-mobile" href="#"><i class="material-icons">menu</i></a>
+      
+    </div>
+  </nav>
+</div>
+<!-- END navbar include -->

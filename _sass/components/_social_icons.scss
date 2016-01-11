@@ -1,0 +1,70 @@
+/* ==========================================================================
+   _social_icons.scss
+   ========================================================================== */
+// codebase @ http://codepen.io/thecssguru/pen/mJpeJe
+//Creates Mixin to use any Font Awesome Class Icon Name in your $fa Map
+
+@mixin social_media($name) {
+  &-#{$name} {
+    background: map-get(map-get($fa, $name), bgcolor) !important;
+    margin: 0 5px 5px 0 !important;
+    &:before {
+      content: map-get(map-get($fa, $name), icon);
+    }
+    &:hover {
+      background: lighten(map-get(map-get($fa, $name), bgcolor), 5%) !important;
+    }
+  }
+}
+
+//Simple Mixin to loop through all of the Social Site Names and Output them
+@mixin social() {
+  @each $btn, $name in $fa {
+    @include social_media($btn);
+  }
+}
+
+//Set Size of Icon
+//$iconSize: 4rem; //width-height/font-size
+
+//Social Media Map
+//Font Awesome Icons and Background Colors
+//Try adding by Font Awesome class name
+$fa: (
+  dropbox: ( icon: "\f16b", bgcolor: $dropbox ),
+  linkedin: ( icon: "\f0e1", bgcolor: $linkedin ),
+  facebook: ( icon: "\f230", bgcolor: $facebook ),
+  github: ( icon: "\f09b", bgcolor: $github ),
+  google-plus: ( icon: "\f0d5", bgcolor: $google-plus ),
+  instagram: ( icon: "\f16d", bgcolor: $instagram ),
+  pintrest: ( icon: "\f0d2", bgcolor: $pinterest ),
+  rss: ( icon: "\f09e", bgcolor: $rss ),
+  twitter: ( icon: "\f099", bgcolor: $twitter ),
+  youtube: ( icon: "\f167", bgcolor: $youtube )
+);
+
+//Social Media Wrap (ul li a)
+.social {
+  &-btn {
+      @extend .btn;
+      width: $button-height;
+      padding: 0 !important;
+      &:before { //Calls Font Awesome & Centers Icon
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit; 
+        color: $button-color-raised;
+        //display: block;
+        //position: absolute; 
+        //left: 50%; 
+        //top: 50%;
+        //transform: translate(-50%,-50%);
+      }
+    }
+  }
+
+.icon {
+  @include social(); //Creates all icons dynamically
+    &-text {
+      display: none;
+    }
+}

@@ -1,0 +1,25 @@
+{% for include in page.includes %}
+{% if include == "committees" %}
+<ul class="collection with-header hoverable">
+  <li class="collection-header">
+    <h5>Committees</h5>
+  </li>
+  
+  {% for collection in site.committees %}
+  {% if collection.title == page.title %}
+  <a class="collection-item waves-effect waves-teal active" href="{{ collection.url | prepend: site.baseurl }}">
+    <span class="title">{{ collection.title }}</span>
+  </a>
+  
+  {% else %}
+  <a class="collection-item waves-effect waves-teal" href="{{ collection.url | prepend: site.baseurl }}">
+    <span class="title">{{ collection.title }}</span>
+  </a>
+  
+  {% endif %}
+  {% endfor %}  
+</ul>
+
+{% endif %}
+{% endfor %}
+<!-- END list-committees include -->

@@ -1,0 +1,23 @@
+<script type='text/javascript'>
+  // Parses returned response and extracts
+  // the title, links, and publish date of each item
+  function recent_posts(o){
+    var items = o.query.results.item;
+    var output = '';
+    var no_items=items.length;
+    for(var i = 0; i < no_items; i++){
+      var title = items[i].title;
+      var link = items[i].link;
+      var date = items[i].pubDate;
+      var category = items[i].category;
+      output += "<article id='blog.caepa' class='col s6 m4 center'><div class='card small hoverable waves-effect waves-dark'><a href='" + link + "'><div class='card-image valign-wrapper blue' style='height:66%'><i class='small material-icons white-text tooltipped' data-position='left' data-tooltip='Read " + title + "' style='position:absolute; right:0'>launch</i><i class='container large material-icons grey-text text-lighten-2'>{{ page.icon }}</i><span class='card-title truncate'>" + category + "</span></div><div class='card-content grey-text text-darken-4'><p class='light' align='left'><strong>" + title + "</strong><br /><small>" + date + "</small></p><p style='visibility: hidden'>{{ page.tagline }}</p></div></a></div></article>";
+    }
+    // Place news stories in div tag
+    document.getElementById('blog.caepa').innerHTML = output;
+  }
+</script>
+
+<script src="{{ page.yql_ghost }}">
+  // https://developer.yahoo.com/yql/console/
+  // select title, link, pubDate from rss where url="http://blog.caepa.org/rss/" limit 7
+</script>

@@ -1,0 +1,88 @@
+---
+
+
+layout: page
+---
+
+<section class="col s12 m6 offset-m1">
+  <article class="section flow-text" align="justify">
+    
+    {% for rendezvous in site.data.Page_Data_-_Rendezvous %}
+    <!-- site.data -->
+    {% if rendezvous.year == page.year %}
+    <!-- site.data = site.page -->
+    
+    <p>{{ rendezvous.title }}</p>
+    <strong>{{ rendezvous.theme }}</strong>
+    <p>{{ rendezvous.date }}, {{ rendezvous.year }}</p>
+    <p>{{ rendezvous.location }}</p>
+    <p>{{ rendezvous.address }}</p>
+    <p>{{ rendezvous.city-state_zipcode }}</p>
+    <p>{{ rendezvous.phone }}</p>
+    <p>{{ rendezvous.website }}</p>
+    <p>{{ rendezvous.reervations }}</p>
+    <p>{{ rendezvous.early-bird-close }}</p>
+    <p>{{ rendezvous.early-bird-one-day }}</p>
+    <p>{{ rendezvous.early-bird-two-day }}</p>
+    <p>{{ rendezvous.membership-one-day }}</p>
+    <p>{{ rendezvous.membership-two-day }}</p>
+    <p>{{ rendezvous.non-member }}</p>
+    <p>{{ rendezvous.payment-online }}</p>
+    <p>{{ rendezvous.payment-mail-in }}</p>
+    
+    {% endif %}
+    {% endfor %}
+  </article>
+  
+  <div class="divider"></div>
+  
+  <article class="section flow-text" align="justify">
+    <div class="card-panel">
+      <span>{{ content }}</span>
+    </div>
+  </article>
+</section>
+<!-- END board member -->
+
+<aside class="col s12 m4">
+  <article class="section">
+    
+    {% include list-forms.html %}
+    
+    {% include list-presenters.html %}    
+    
+  </article>
+</aside>
+<!-- END list -->
+
+<!-- presentar model yaml-->
+{% for presenter in site.data.rendezvous.2015_presenters %}
+<div id="{{ presenter.name | remove: ' ' }}" class="row modal modal-fixed-footer">
+  <div class="modal-content">
+    <h5>{{ presenter.name }}</h5>
+    <ul class="collapsible" data-collapsible="accordion">
+      {% for session in presenter.sessions %}
+      <li>
+        <div class="collapsible-header"><i class="material-icons">info_outline</i>{{ session.title }}</div>
+        <div class="collapsible-body"><p>{{ session.description }}</p></div>
+      </li>
+      {% endfor %}
+    </ul>
+    
+    <ul class="collection with-header">
+      <li class="collection-header">Downloads</li>
+    {% for pdf in presenter.pdf %}
+      <a class="collection-item waves-effect waves-teal modal-trigger" href="{{ pdf.path }}">
+        <span class="title truncate"><i class="right material-icons">picture_as_pdf</i>{{ pdf.title }}</span>
+      </a>
+    {% endfor %}
+    </ul>
+  </div><!-- END form content-->
+    
+    <div class="col s12 modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Close</a>
+      </button>
+    </div><!-- END form footer -->
+</div><!-- END modal -->
+{% endfor %}
+

@@ -1,0 +1,48 @@
+<footer class="page-footer grey darken-3">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m6 l7" align="justify">
+        <h5 class="white-text" id="logo-container">
+          <!--img class="left" alt="Logo" src="/assets/images/{{ site.logo }}" /-->
+          {{ site.title }}
+        </h5>
+        <p class="grey-text text-lighten-4">{{ site.mission }}</p>
+      </div>
+      <div class="col s12 m5 l4 offset-l1 offset-m1 white-text">
+        <h5>Connect</h5>
+        <ul class="social_media">
+          {% for link in site.social_media %}
+            {% if link.url != null %}
+              <li class='left'>
+                <a class='social-btn icon-{{ link.name }}' href='{{ link.url }}'>
+                  <span class='icon-text'>{{ link.name }}</span>
+                </a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright grey darken-4">
+    <div class="container">
+      <span class="left">&copy; {{ site.time | date: "%Y" }} {{ site.title }}, all rights reserved</span>
+      
+      {% for page in site.board_members %}
+      {% if page.developer == true %}
+      <span class="right">Developed by&ensp;
+        <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></span>
+      
+      {% endif %}
+      {% endfor %}
+      <!-- include made with jekyll, materializecss, and ghost -->
+    </div>
+  </div>
+</footer>
+
+  <!-- scripts -->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+  <script src="{{ '/assets/js/materialize.min.js' | prepend: site.baseurl }}" type="text/javascript"></script>
+  <script src="{{ '/assets/js/init.js' | prepend: site.baseurl }}" type="text/javascript"></script>
+  <!--<script src="{{ '/assets/js/yql.js' | prepend: site.baseurl }}" type="text/javascript"></script>-->
+<!-- END footer include -->

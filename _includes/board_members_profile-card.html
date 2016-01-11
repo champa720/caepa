@@ -1,0 +1,74 @@
+{% for include in page.includes %}
+{% if include == "board_members_profile" %}
+
+{% for data in site.data.Page_Data_-_Board_Members %}
+{% if data.name == page.title %}
+<div class="card hoverable">
+  <div class="card-image waves-effect waves-block waves-light {{ data.favorite-color }}">
+    
+    {% if data.photo_path != null %}
+    <img class="activator" src="{{ site.baseurl }}/assets/img/board_members/{{ data.photo_path }}" alt="{{ data.photo_path }}">
+    
+    {% else %}
+    <img class="activator" src="{{ site.default_photo_path | prepend: site.baseurl }}" alt="{{ site.default_photo_path }}">
+    
+    {% endif %}
+  </div>
+  
+  <div class="card-content">
+    <span class="card-title activator grey-text text-darken-4">{{ data.name }}<i class="material-icons right">more_vert</i></span>
+    <p><a href="mailto:{{ data.email }}">{{ data.email }}</a></p>
+  </div>
+  
+  <div class="card-reveal {{ data.favorite-color }} grey-text text-lighten-3">
+    <span class="card-title grey-text text-lighten-4">{{ data.name }}<i class="material-icons right">close</i></span>
+    <span>{{ data.job-title }}</span>
+    <ul class="light">
+      {% if data.employer != null and data.program != null %}
+      <li>{{ data.employer }},&ensp;{{ data.program }}&emsp;
+
+      {% elsif data.employer != null or data.program != null %}      
+      <li>{{ data.employer }}{{ data.program }}&emsp;
+
+      {% endif %}
+      {% if data.employer-website != null %}
+      <a class="grey-text text-lighten-2" href="{{ data.employer-website }}" target="_blank">website</a>
+
+      {% endif %}
+      </li>
+    </ul>
+    <ul class="light">
+      {% if data.president != null %}
+      <li>{{ data.president }}&ensp;|&ensp;President</li>
+      {% endif %}
+
+      {% if data.president-elect != null %}
+      <li>{{ data.president-elect }}&ensp;|&ensp;President Elect</li>
+      {% endif %}
+
+      {% if data.past-president != null %}
+      <li>{{ data.past-president }}&ensp;|&ensp;Past President</li>
+      {% endif %}
+
+      {% if data.secretary != null %}
+      <li>{{ data.secretary }}&ensp;|&ensp;Secretary</li>
+      {% endif %}
+
+      {% if data.treasure != null %}
+      <li>{{ data.treasurer }}&ensp;|&ensp;Treasurer</li>
+      {% endif %}
+
+      {% if data.committee != null %}
+      <li>{{ data.term }}&ensp;|&ensp;{{ data.committee }} Committee</li>
+      {% endif %}
+    </ul>
+      
+    <p><a class="grey-text text-lighten-3" href="mailto:{{ data.email }}">{{ data.email }}</a></p>
+  </div>
+</div>
+
+{% endif %}  
+{% endfor %}
+{% endif %}
+{% endfor %}
+<!-- END board_member_profile include -->

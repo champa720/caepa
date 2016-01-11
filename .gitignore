@@ -1,0 +1,5 @@
+_docs
+_site
+.sass-cache
+.jekyll-metadata
+.bundle

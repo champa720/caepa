@@ -1,0 +1,22 @@
+{% for include in page.includes %}
+{% if include == "links" %}
+
+
+<ul class="collapsible" data-collapsible="accordion">
+  {% assign grouped_tags = site.data.Page_Data_-_Link_Sharing | group_by: "Tag" | sort: "Tag" %}
+  {% for group in grouped_tags %}
+  <li>
+    <div class="collapsible-header"><i class="material-icons">link</i>
+      <span class="truncate">{{ group.Tag }}</span>
+    </div>
+    <div class="collapsible-body">
+      <p class="flow-text">{{ data.Short-Name }}</p>
+      <p>{{ data.Description }}</p>
+      <p><a class="btn" target="_blank" href="{{ link.Website }}"><i class="material-icons right">launch</i>{{ data.Name }}</a></p>
+    </div>
+    {% endfor %}
+  </li>
+</ul>
+
+{% endif %}
+{% endfor %}

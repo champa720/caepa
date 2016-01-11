@@ -1,0 +1,82 @@
+{% for include in page.includes %}
+{% for form_type in page.form_types %}
+{% if include == "forms" and form_type == 'general' %}
+<ul class="collection with-header hoverable">
+  <li class="collection-header">  
+    <h5>General Forms</h5>
+  </li>
+  
+  {% for page in site.forms %}  
+  {% if form_type == 'general' and page.form_type == 'general' %}
+  <a class="collection-item avatar waves-effect waves-teal" href="{{ page.url | prepend: site.baseurl }}">
+    <i class="left material-icons circle teal">insert_drive_file</i>
+    <strong class="title truncate">{{ page.title }}</strong>
+    <span class="light">{{ page.tagline }}</span>
+  </a>
+  
+  {% endif %}
+  {% endfor %}
+</ul>
+<!-- END events forms -->
+
+{% elsif include == "forms" and form_type == 'events' %}
+<ul class="collection with-header hoverable">
+  <li class="collection-header">  
+    <h5>Event Forms</h5>
+  </li>
+  
+  {% for page in site.forms %}  
+  {% if form_type == 'events' and page.form_type == 'events' %}
+  <a class="collection-item avatar waves-effect waves-teal" href="{{ page.url | prepend: site.baseurl }}">
+    <i class="left material-icons circle teal">insert_drive_file</i>
+    <strong class="title truncate">{{ page.title }}</strong>
+    <span class="light">{{ page.tagline }}</span>
+  </a>
+  {% endif %}
+  {% endfor %}
+  
+</ul>
+<!-- END events forms -->
+
+{% elsif include == "forms" and form_type == 'contact' %}
+<ul class="collection with-header hoverable">
+  <li class="collection-header">  
+    <h5>Contact Form</h5>
+  </li>
+  
+  {% for page in site.forms %}  
+  {% if form_type == 'contact' and page.form_type == 'contact' %}
+  <a class="collection-item avatar waves-effect waves-teal" href="{{ page.url | prepend: site.baseurl }}">
+    <i class="left material-icons circle teal">insert_drive_file</i>
+    <strong class="title truncate">{{ page.title }}</strong>
+    <span class="light">{{ page.tagline }}</span>
+  </a>
+  
+  {% endif %}
+  {% endfor %}
+</ul>
+<!-- END contact forms -->
+
+{% elsif include == "forms" and form_type == 'sharing' %}
+<ul class="collection with-header hoverable">
+  <li class="collection-header">  
+    <h5>Sharing is Caring</h5>
+  </li>
+  
+  {% for page in site.forms %}  
+  {% if form_type == 'sharing' and page.form_type == 'sharing' %}
+  <a class="collection-item avatar waves-effect waves-teal" href="{{ page.url | prepend: site.baseurl }}">
+    <i class="left material-icons circle teal">insert_drive_file</i>
+    <strong class="title truncate">{{ page.title }}</strong>
+    <span class="light">{{ page.tagline }}</span>
+  </a>
+  
+  {% endif %}
+  {% endfor %}
+</ul>
+<!-- END contact forms -->
+
+{% endif %}
+{% endfor %}
+{% endfor %}
+<!-- END list-forms include -->

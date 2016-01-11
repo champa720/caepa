@@ -1,0 +1,19 @@
+{% for include in page.includes %}
+{% if include == "board_members_profile" %}
+<ul class="collection">
+  
+  {% for data in site.data.Page_Data_-_Board_Members %}
+  {% if data.name == page.title %}
+  <li class="collection-item avatar {{ data.favorite-color }} grey-text text-lighten-3">
+    <i class="left material-icons circle">contact_mail</i>
+    <p class="title grey-text text-lighten-4">{{ data.name }}</p>     
+    <a class="grey-text text-lighten-3" href="mailto:{{ data.email }}">{{ data.email }}</a>
+  </li>
+
+  {% endif %}  
+  {% endfor %}
+</ul>
+
+{% endif %}
+{% endfor %}
+<!-- END board_member_profile-email include -->

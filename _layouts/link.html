@@ -1,0 +1,22 @@
+---
+layout: default
+---
+<p>default header for all gallery pages</p>
+
+{% for link in site.data.Testing-Links %}
+  {% if link.TAGS == page.TAGS %}
+    <h1>{{ link.name }}</h1>
+    <ol>
+    {% for image in link.SHORT_NAME %}
+      <li>
+        {{ image.SHORT_NAME }}<br>
+        <a href="{{ gallery.imagefolder }}/{{ image.name }}" data-lightbox="{{ gallery.id }}" title="{{ image.text }}">
+          <img src="{{ gallery.imagefolder }}/{{ image.thumb }}">
+        </a>
+      </li>
+    {% endfor %}
+    </ol>
+  {% endif %}
+{% endfor %}
+
+<p>default footer for all gallery pages</p>

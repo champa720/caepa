@@ -1,0 +1,12 @@
+    <!-- move to includes >> list-XXX -->
+    <ul class="collection with-header hoverable">
+      <li class="collection-header">
+        <h5>Presenters</h5>
+      </li>
+      <!-- yaml test -->
+      {{ site.data.rendezvous.2014-presenters.rendezvous.year.presenters }}
+      <a class="collection-item waves-effect waves-teal modal-trigger" href="#{{ presenter.name | remove: ' ' }}">
+        <span class="title truncate"><i class="right material-icons">picture_as_pdf</i>{{ presenter.name }}</span>
+      </a>
+    </ul>
+    <!-- END list-forms include -->

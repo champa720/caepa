@@ -1,0 +1,27 @@
+{% for include in page.includes %}
+{% if include == "links_featured" %}
+
+{% for data in site.data.Page_Data_-_Link_Sharing %}
+{% if data.Featured == "TRUE" %}
+<div class="card">
+  <div class="card-image waves-effect waves-block waves-dark">
+    <img class="activator" src="http://s.wordpress.com/mshots/v1/{{ data.Website-URL }}?w=400">
+  </div>
+  <div class="card-content">
+    <span class="card-title activator grey-text text-darken-4">
+      <i class="material-icons right">more_vert</i>
+      <strong>{{ data.Short-Name }}</strong>
+    </span>
+    <p class="truncate"><a href="{{ featured.Website-URL }}">{{ data.Name }}</a></p>
+  </div>
+  <div class="card-reveal">
+    <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>{{ data.Short-Name }}</span>
+    <p>{{ data.Description | truncate:100 '...' }}</p>
+    <p><a class="btn" target="_blank" href="{{ data.Website-URL }}"><i class="material-icons right">launch</i>{{ data.Name }}</a></p>
+  </div>
+</div>
+{% endif %}
+{% endfor %}
+
+{% endif %}
+{% endfor %}

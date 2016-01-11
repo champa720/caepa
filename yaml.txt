@@ -1,0 +1,30 @@
+ # page variables
+
+title: 
+icon: 
+tagline: # appears below title in header and in card.content
+excerpt: # SEO meta, auto generated defaults to site.mission
+description:
+
+ # should year be more specific
+year: # used with rendevous
+
+lists: [committees, fact_sheet, events, forms, organiation_csv, presenters]
+form_types: [events, general, contact]
+
+form_year: unused
+form_type: # types of forms available
+google_url: # iframe variable for embedded google forms
+
+ # change yql_name to include url
+yql_ghost: used to query > https://developer.yahoo.com/yql/console/
+
+menu: # used to add nav item
+weight: # used to order nav item
+sub_menu: # used to add dropdown nav item
+footer_menu: # used to add footer nav item
+
+image_path: # header image
+photo_path: # content image, i.e. avatars
+
+layout: default, event, iframe, link, page, page_aside, page_no_content, page_no_header, post

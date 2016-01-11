@@ -1,0 +1,32 @@
+- title: "Home"
+  icon: "home"
+  url: "/"
+
+- title: "Links"
+  icon: "link"
+  url: "/links.html"
+  
+- title: "Programs"
+  icon: "school"
+  url: "/programs.html"
+  
+- title: "About Us"
+  icon: "contact_mail"
+  url: "/about_us.html"
+
+- title: "Events"
+  icon: "event"
+  url: "/events.html"
+  
+- title: "More"
+  icon: "more_vert"
+  subcategories:
+    - subtitle: "Advocacy"
+      subicon: "favorite"
+      suburl: "/committees/advocacy.html"
+    - subtitle: "Communications"
+      subicon: "favorite"
+      suburl: "/committees/communications.html"
+    - subtitle: "Professional Development"
+      subicon: "favorite"
+      suburl: "/committees/pd.html"

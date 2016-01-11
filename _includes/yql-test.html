@@ -1,0 +1,30 @@
+<script type='text/javascript'>
+  // Parses returned response and extracts
+  // the title, links, and text of each news story.
+function test_caepa(yql) {
+  'use strict';
+  var items = yql.query.results.row, output = '', no_items = items.length;
+  for (var i = 1; i < no_items; i++) {
+    var title = items[i].col0;
+    var link = items[i].col2;
+    var desc = items[i].col3;
+    output += "<h3><a href='" + link + "'>" + title + "</a></h3>" + desc + "<hr/>";
+  }
+  // Place news stories in div tag
+  document.getElementById('test.caepa').innerHTML = output;
+}
+</script>
+
+<div id='test.caepa'></div>
+
+<script src="https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20csv%20where%20url%3D%22https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F17nV4g1nWUHj2x0CF388UuzLxdZTzVPvX2TIi4Rz9JLo%2Fpub%3Fgid%3D0%26single%3Dtrue%26output%3Dcsv%22&format=json&diagnostics=true&callback=test_caepa">
+  // https://developer.yahoo.com/yql/console/
+  // select * from csv where url='https://docs.google.com/spreadsheets/d/1f2JlIuAX5n7gwMp6yVCdPmpw2RtB_C4oEsqAVPxob-g/pub?gid=1236804352&single=true&output=csv'
+</script>
+
+<!-- caepa-newsletter | dropbox query
+  // https://developer.yahoo.com/yql/console/
+  // 
+http://developer.yahoo.com/yql/console/?q=select%20*%20from%20html%20where%20url%3D'https%3A%2F%2Fwww.dropbox.com%2Fsh%2Fypdm4xlivndisuv%2FAADh7o63hXwIokWUnX3xExXna%3Fdl%3D0'
+-->
+<!-- END yql-test include -->

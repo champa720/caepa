@@ -1,0 +1,9 @@
+<hr />
+{% for page in site.pages %}
+{% for collection in site.collections %}
+{% if page.collection == collection.label %}
+<p>{{ page.url | prepend: site.baseurl }}</p>
+{% endif %}
+{% endfor %}
+{% endfor %}
+<hr />

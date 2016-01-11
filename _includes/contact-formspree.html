@@ -1,0 +1,57 @@
+<div id="contact" class="row modal modal-fixed-footer">
+  <form id="contact_form" action="" method="POST" name="contact_form">
+    <div class="modal-content">
+      <div class="input-field col s12">
+        <select id="contact">
+          <option value="" disabled selected>Choose your option</option>
+          <option value="info@caepa.org">General Information &lt;info@caepa.org&gt;</option>
+          <option value="advocacy@caepa.org">Advocacy &lt;advocacy@caepa.org&gt;</option>
+          <option value="newsletter@caepa.org">Communications and Outreach &lt;newsletter@caepa.org&gt;</option>
+          <option value="pd@caepa.org">Professional Development &lt;pd@caepa.org&gt;</option>
+          <option value="admin@caepa.org">Website Administrator &lt;admin@caepa.org&gt;</option>
+        </select>
+        <label>Who would you like to contact?</label>
+      </div>
+      <div class="input-field col s12">
+        <i class="material-icons prefix">person_outline</i>
+        <input type="text" name="name" />
+        <label for="name">Name</label>
+      </div>
+      <div class="col s12 input-field">
+        <i class="material-icons prefix">mail_outline</i>
+        <input type="email" name="_replyto" />
+        <label for="_replyto">Email</label>
+      </div>
+      <input type="hidden" name="_subject" value="new message from caepa.org" />
+      <input type="hidden" name="_cc" value="_replyto" />
+      <div class="col s12 input-field">
+        <i class="material-icons prefix">chat_bubble_outline</i>
+        <textarea class="materialize-textarea" name="message" rows="5"></textarea>
+        <label for="message">Message</label>
+      </div>
+      <div class="col s12 input-field">
+        <i class="material-icons prefix">info_outline</i>
+        <label>This message will be cc'ed to the your email.</label>
+      </div>
+      <input type="text" name="_gotcha" style="display:none" />
+      <input type="hidden" name="_next" value="/thank_you.html" />
+      <!-- create Thank You page -->
+    </div><!-- END form content-->
+    
+    <div class="col s12 modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Just Joking!</a>
+      <button class="btn waves-effect waves-light" type="submit" name="action" value="Send">Send
+        <i class="material-icons right">send</i>
+      </button>
+    </div><!-- END form footer -->
+    
+  </form>
+</div><!-- END contact modal -->
+
+<script>
+  document.getElementById('contact_form').contact.onchange = function() {
+    var newaction = this.value;
+    document.getElementById('contact_form').action = '//formspree.io/' + newaction;
+  };
+</script>
+<!-- END contact include -->

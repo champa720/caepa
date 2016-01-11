@@ -1,0 +1,58 @@
+{% for include in page.includes %}
+{% if include == "board_members_profile" %}
+<ul class="collection">
+  
+  {% for data in site.data.Page_Data_-_Board_Members %}
+  {% if data.name == page.title %}
+  <li class="collection-item avatar {{ data.favorite-color }} grey-text text-lighten-3" style="padding-left: 100px" >
+    
+    {% if data.photo_path != null %}
+    <img class="circle" style="height:70px; width:70px" src="{{ site.baseurl }}/assets/img/board_members/{{ data.photo_path }}" alt="{{ data.photo_path }}">
+    
+    {% else %}
+    <img class="circle" style="height:70px; width:70px" src="{{ site.default_photo_path | prepend: site.baseurl }}" alt="{{ site.default_photo_path }}">
+    
+    {% endif %}
+    <span class="title activator grey-text text-lighten-4">{{ data.name }}</span>
+    <p class="light truncate">
+      {% if data.employer != null and data.employer != null %}
+      {{ data.employer }},&ensp;{{ data.program }}
+    
+      {% elsif data.employer != null or data.employer != null %}
+      {{ data.employer }}{{ data.program }}
+      
+      {% endif %}
+    </p>
+    <!--
+      {{ data.term }}&emsp;|&emsp;
+      
+      {% if data.president != null %}
+      President: {{ data.president }}
+
+      {% elsif data.president-elect != null %}
+      President Elect: {{ data.president-elect }}
+
+      {% elsif data.past-president != null %}
+      Past President: {{ data.past-president }}
+
+      {% elsif data.secretary != null %}
+      Secretary: {{ data.secretary }}
+
+      {% elsif data.treasure != null %}
+      Treasure: {{ data.treasure }}
+
+      {% else %}
+      {{ data.committee }} Committee
+
+      {% endif %}
+    -->      
+    <p><a class="grey-text text-lighten-3" href="mailto:{{ data.email }}">{{ data.email }}</a></p>
+  </li>
+
+  {% endif %}  
+  {% endfor %}
+</ul>
+
+{% endif %}
+{% endfor %}
+<!-- END board_member_profile include -->

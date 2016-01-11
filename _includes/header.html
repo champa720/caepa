@@ -1,0 +1,65 @@
+<header class="parallax-container valign-wrapper">
+  <div class="container">
+    <h2 class="col s12 light">{{ page.title }}</h2>
+    <blockquote>
+      {% if page.collection == 'events' %}
+    <!-- for rendezvous theme -->
+      
+      {% for rendezvous in site.data.rendezvous.Data_-_Rendezvous %}
+      {% if rendezvous.title == page.title %}
+      <h5 class="col s12 thin">{{ rendezvous.theme }}</h5>
+      
+      {% endif %}
+      {% endfor %}
+    <!-- for board_member position -->
+      
+      {% elsif page.collection == 'board_members' %}      
+      {% for data in site.data.Page_Data_-_Board_Members %}
+      {% if data.name == page.title %}
+      <ul>
+      <!-- if executive -->
+      {% if data.president != null %}
+      <h5 class="col s12 thin">{{ data.president }}&ensp;|&ensp;President</h5>
+      {% endif %}
+
+      {% if data.president-elect != null %}
+      <h5 class="col s12 thin">{{ data.president-elect }}&ensp;|&ensp;President Elect</h5>
+      {% endif %}
+
+      {% if data.past-president != null %}
+      <h5 class="col s12 thin">{{ data.past-president }}&ensp;|&ensp;Past President</h5>
+      {% endif %}
+
+      {% if data.secretary != null %}
+      <h5 class="col s12 thin">{{ data.secretary }}&ensp;|&ensp;Secretary</h5>
+      {% endif %}
+
+      {% if data.treasure != null %}
+      <h5 class="col s12 thin">{{ data.treasure }}&ensp;|&ensp;Treasure</h5>
+      {% endif %}
+
+      {% if data.committee != null and data.term != null%}
+      <h5 class="col s12 thin">{{ data.term }}&ensp;|&ensp;{{ data.committee }} Committee</h5>
+      
+      {% endif %}
+      {% endif %}
+      {% endfor %}
+      </ul>
+    <!-- for page tagline -->
+      {% elsif page.tagline != null %}
+      <h5 class="col s12 thin">{{ page.tagline }}</h5>
+      
+      {% else %}
+    <!-- for page description -->
+      <h5 class="col s12 thin">{{ page.description }}</h5>
+      
+      {% endif %}
+    </blockquote>
+  </div>
+  {% if page.image_path != null %}
+  <div class="parallax grey"><img alt="{{ page.image_path }}" src="{{ page.image_path }}"></div>
+  {% else %}
+  <div class="parallax grey"><img alt="{{ site.default_image_path | prepend: site.baseurl }}" src="{{ site.default_image_path }}"></div>
+  {% endif %}
+</header>
+<!-- END header include -->

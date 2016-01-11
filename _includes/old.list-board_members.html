@@ -1,0 +1,48 @@
+{% for include in page.includes %}
+{% if include == "board_members" %}
+
+{% assign current_board_members = site.data.Page_Data_-_Board_Members | where: 'service', 'current' %}
+
+<ul class="collection with-header hoverable">
+  <li class="collection-header">
+    <h5>Board Members</h5>
+  </li>
+  
+  {% for data in current_board_members %}
+  {% for collection in site.board_members %}  
+  {% if data.name == collection.title and data.name == page.title %}
+  <a class="collection-item avatar waves-effect waves-teal active" href="{{ collection.url | prepend: site.baseurl }}">
+    
+    {% if data.photo_path != null %}
+    <img src="{{ site.baseurl }}/assets/img/board_members/{{ data.photo_path }}" alt="{{ data.photo_path }}" class="circle">
+    
+    {% else %}
+    <img src="{{ site.default_photo_path | prepend: site.baseurl }}" alt="{{ site.default_photo_path | prepend: site.baseurl }}" class="circle">
+    
+    {% endif %}
+    <strong class="title truncate">{{ data.name }}</strong>
+    <p class="light truncate">{{ data.term }}</p>
+  </a>
+  
+  {% elsif data.name == collection.title %}
+  <a class="collection-item avatar waves-effect waves-teal" href="{{ collection.url | prepend: site.baseurl }}">
+    
+    {% if data.photo_path != null %}
+    <img src="{{ site.baseurl }}/assets/img/board_members/{{ data.photo_path }}" alt="{{ data.photo_path }}" class="circle">
+    
+    {% else %}
+    <img src="{{ site.default_photo_path | prepend: site.baseurl }}" alt="{{ site.default_photo_path | prepend: site.baseurl }}" class="circle">
+    
+    {% endif %} 
+    <strong class="title truncate">{{ data.name }}</strong>
+    <p class="light truncate">{{ data.term }}</p>
+  </a>
+  
+  {% endif %}
+  {% endfor %}  
+  {% endfor %}
+</ul>
+
+{% endif %}
+{% endfor %}
+<!-- END list-board_members include -->

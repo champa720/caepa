@@ -1,0 +1,71 @@
+title: CAEPA
+name: Colorado Adult Education Professional Association
+logo: Logo-CAEPA-icon-large-256x256.png
+
+mission: >
+  The Colorado Adult Education Professional Association (CAEPA) provides leadership to the field of adult education and family literacy by offering opportunities for professional development, advocacy, and resource sharing to improve the quality of life for every Coloradan.
+  
+statement: > 
+  Providing Colorado Leadership in Adult Education and Literacy
+  
+baseurl: "/caepa" # the subpath of your site, e.g. /blog
+url: "http://champa720.github.io" # the base hostname & protocol for your site
+
+ghost_title: blog.caepa.org
+ghost_url: http://blog.caepa.org
+ghost_icon: chrome_reader_mode
+ghost_logo: ghost.png
+ghost_tagline: >
+  Lorem ipsum dolor sit amet, ad est erant impedit adolescens, eam ne dicta soleat adversarium. Ut dico eripuit usu. Eros putent regione ex usu, agam volutpat mnesarchum cu qui, cu.
+
+default_image_path: "https://unsplash.it/1024/758/?random"
+default_photo_path: "/assets/img/shadow.png"
+permalink: pretty
+
+social_media:
+  - name: dropbox
+    url:  http://dropbox.com
+  - name: linkedin
+    url:  https://www.linkedin.com/company/colorado-adult-education-professional-association-caepa-
+  - name: facebook
+    url:  https://www.facebook.com/caepa.co
+  - name: github
+    url:  http://github.com/caepa
+  - name: google-plus
+    url:  http://plus.google.com/caepaboard
+  - name: rss
+    url:  http://blog.caepa.org/rss
+  - name: twitter
+    url:  https://twitter.com/intent/follow?screen_name=caepa_co
+
+google-analytics:
+muut:
+  
+collections:
+  affiliates:
+    output: true
+  board_members:
+    output: true
+  committees:
+    output: true
+  docs:
+    output: true
+  events:
+    output: true
+    title: Events
+  forms:
+    output: true
+    title: Forms
+  fact_sheets:
+    output: true
+    title: Fact Sheets
+
+ # MARKDOWN   
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  
+ # PAGINATION
+gems: [jekyll-paginate]
+paginate: 5
+paginate_path: "page:num"

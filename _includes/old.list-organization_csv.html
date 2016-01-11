@@ -1,0 +1,101 @@
+{% if page.type == 'organization' %}
+<ul class="collection with-header hoverable">
+  <li class="collection-header">
+    <h5>Committees</h5>
+  </li>
+  {% for committee in site.committees %}
+  {% if committee.title == page.title %}
+  <a class="collection-item waves-effect waves-teal active" href="{{ committee.url | prepend: site.baseurl }}">
+    <span class="title">{{ committee.title }}</span>
+  </a>
+  {% else %}
+  <a class="collection-item waves-effect waves-teal" href="{{ committee.url | prepend: site.baseurl }}">
+    <span class="title">{{ committee.title }}</span>
+  </a>
+  {% endif %}
+  {% endfor %}
+</ul>
+{% endif %}
+<!-- END list-committees list-organization include -->
+
+
+
+{% if page.type == 'organization' and page.collection == 'committees' %}
+<!-- true/false -->
+{% assign current_board_members = site.data.Data_-_Board_Members | where: 'service', 'current' %}
+<!-- true/false -->
+<ul class="collection with-header hoverable">
+  <li class="collection-header">
+    <h5>Committee Members</h5>
+  </li>
+  
+  {% for board_member in current_board_members %}
+  <!-- assigned site.data -->
+  {% for board_member_collection in site.board_members %}
+  <!-- site.collection -->
+  {% if board_member.name == board_member_collection.title and board_member.committee == page.title %}
+  <!-- site.data = site.collection and site.data = site.page -->  
+  <a class="collection-item avatar waves-effect waves-teal" href="{{ board_member_collection.url | prepend: site.baseurl }}">
+    {% if board_member.photo_path != null %}
+    <img src="{{ site.baseurl }}/assets/img/board_members/{{ board_member.photo_path }}" alt="{{ board_member.photo_path }}" class="circle">
+    {% else %}
+    <img src="{{ site.default_photo_path | prepend: site.baseurl }}" alt="{{ site.default_photo_path | prepend: site.baseurl }}" class="circle">
+    {% endif %}   
+    <strong class="title truncate">{{ board_member.name }}</strong>
+    <p class="light truncate">{{ board_member.term }}</p>
+  </a>
+  
+  {% endif %}
+  {% endfor %}  
+  {% endfor %}
+</ul>
+
+{% endif %}
+<!-- END list-committe_members list-organization include -->
+
+
+
+{% if page.type == 'organization' and page.collection == 'board_members' %}
+<!-- true/false -->
+{% assign current_board_members = site.data.Data_-_Board_Members | where: 'service', 'current' %}
+<!-- true/false -->
+<ul class="collection with-header hoverable">
+  <li class="collection-header">
+    <h5>Board Members</h5>
+  </li>
+  {% for board_member in current_board_members %}
+  <!-- assigned site.data -->
+  {% for board_member_collection in site.board_members %}
+  <!-- site.collection -->
+  {% if board_member.name == board_member_collection.title %}
+  <!-- site.data = site.collection -->
+  {% if board_member.name == page.title %}
+  <!-- site.data = site.page -->  
+  <a class="collection-item avatar waves-effect waves-teal active" href="{{ board_member_collection.url | prepend: site.baseurl }}">
+    {% if board_member.photo_path != null %}
+    <img src="{{ site.baseurl }}/assets/img/board_members/{{ board_member.photo_path }}" alt="{{ board_member.photo_path }}" class="circle">
+    {% else %}
+    <img src="{{ site.default_photo_path | prepend: site.baseurl }}" alt="{{ site.default_photo_path | prepend: site.baseurl }}" class="circle">
+    {% endif %}
+    <strong class="title truncate">{{ board_member.name }}</strong>
+    <p class="light truncate">{{ board_member.term }}</p>
+  </a>
+  
+  {% else %}
+  <a class="collection-item avatar waves-effect waves-teal" href="{{ board_member_collection.url | prepend: site.baseurl }}">
+    {% if board_member.photo_path != null %}
+    <img src="{{ site.baseurl }}/assets/img/board_members/{{ board_member.photo_path }}" alt="{{ board_member.photo_path }}" class="circle">
+    {% else %}
+    <img src="{{ site.default_photo_path | prepend: site.baseurl }}" alt="{{ site.default_photo_path | prepend: site.baseurl }}" class="circle">
+    {% endif %} 
+    <strong class="title truncate">{{ board_member.name }}</strong>
+    <p class="light truncate">{{ board_member.term }}</p>
+  </a>
+  
+  {% endif %}
+  {% endif %}
+  {% endfor %}  
+  {% endfor %}
+</ul>
+{% endif %}
+<!-- END list-board_members list-organization include -->

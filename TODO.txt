@@ -1,0 +1,49 @@
+#TODO
+
+content that needs updating
+
+advocacy
+ * committee >> overview >> md
+ * include yql >> blog/advocacy >> on page
+ * fact_sheet >> overview >> md 
+ * FAQs - adult ed 
+ * FAQs - caepa
+ 
+communication
+ * committee >> overview >> md
+ * include yql >> blog/newletter >> on page
+ * newletter >> overview >> md
+ 
+professional development
+ * committee >> overview >> md
+ * include yql >> blog/events >> on page
+ * events  >> overview >> md
+    * list-presenters by strand
+      * ??? query from site.data to site.events >> yaml: year
+        * problem: multiple presenter files | solution: merge into on file spreadsheet.presenters
+      * ??? include file downloads from query
+        * problem: multiple files, multiple locations ??? how-to-organize files
+ * should this be rendezvous? and call to action
+ 
+executive (non-committee)
+ * forms >> overview >> md
+
+affiliates >> colleciton.affiliates >> pages
+ * Waiting on member benifits
+
+---
+additional content
+ * ??? executive members call to action ???
+    * executive page with overview >> md
+    * list general forms, ie: Application / intrest forms / surveys
+ * ??? FAQs - who is caepa??? >> collection.fact_sheets >> pages or site.data + includes list
+ * ??? Call to Aciton >> Rendezvous ??? point at events page could do a site.events loop to access yaml
+    * should this move from footer_menu to menu
+ * ??? Call to Action >> Newsletter ???
+    * should this be an includes list-newsletter and include >> committees.commmunications page 
+    * should this be a base page, like events, and list in footer menu
+---
+remove content
+ * about_us
+    * replace with FAQs or About
+    * placement: menu or foot_menu

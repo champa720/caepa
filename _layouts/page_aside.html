@@ -1,0 +1,63 @@
+---
+layout: default
+---
+{% include header.html %}
+
+<main class="content" role="main">
+  <div class="row">
+    <section class="col s12 m6 offset-m1">
+      <article class="section flow-text" align="justify">        
+        {% include board_members_profile-email.html %}
+    
+        {{ content | remove: '<p>' | remove: '</p>' }}
+        
+      </article>      
+      {% if page.title == "Link Sharing" %}
+      <div class="divider"></div>
+      <article class="section" align="justify">
+        {% include list-links-collapsible.html %}        
+      </article>
+      
+      {% endif %}
+    </section>
+    
+    <aside class="col s12 m4">
+      <article class="section">        
+        {% include board_members_profile-card.html %}
+        {% include list-board_members-collapsible.html %}
+        {% include list-committees.html %}
+        {% include list-committee_members.html %}        
+        {% include list-events.html %}
+        {% include list-forms.html %}
+        {% include list-fact_sheets.html %}        
+        {% include list-links_featured-card.html %}
+      </article>
+    </aside>
+  </div>  
+      
+  {% if page.yql_ghost != null %}
+  <div class="row">
+    <section class="col s12 m10 offset-m1">
+      <div class="divider"></div>
+      
+      {% if page.title == "Committees" %}      
+      <h4 class="center-align">Weekly Updates by the {{ page.title }}</h4>
+      
+      {% elsif page.sub_menu == true %}
+      <h4 class="center-align">Recent Posts by the {{ page.title }} Committee</h4>
+      
+      {% else %}
+      <h4 class="center-align">Recent Posts about {{ page.title }}</h4>
+        
+      {% endif %}
+      <div id="blog.caepa" >
+        
+        {% include yql_ghost-card.html %}      
+        
+      </div>
+    </section>
+  </div>
+  
+  {% endif %}
+</main>
+<!-- END page_aside -->

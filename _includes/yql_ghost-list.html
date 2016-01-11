@@ -1,0 +1,24 @@
+<script type='text/javascript'>
+  // Parses returned response and extracts
+  // the title, links, and publish date of each item
+  function recent_posts(o){
+    var items = o.query.results.item;
+    var output = '';
+    var no_items=items.length;
+    for(var i = 0; i < no_items; i++){
+      var title = items[i].title;
+      var link = items[i].link;
+      var date = items[i].pubDate;
+      output += "<a class='collection-item' href='" + link + "'><span class='title truncate'>" + title + "</span></a>";
+    }
+    // Place news stories in div tag
+    document.getElementById('blog.caepa').innerHTML = output;
+  }
+</script>
+
+<script src='{{ page.yql_ghost }}'>
+  // https://developer.yahoo.com/yql/console/
+  // select title, link, pubDate, category from rss where url="http://blog.caepa.org/rss/" limit 7
+  // 2016 forms https://drive.google.com/folderview?id=0B3qyIxugPt-kTkFfaWMtN19uR2s&usp=sharing#list
+</script>
+<!-- END yql include -->

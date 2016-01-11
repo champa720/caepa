@@ -1,0 +1,201 @@
+---
+title: Home
+icon: home
+
+ # select title, link, pubDate, category from rss where url="http://blog.caepa.org/rss/" limit 7
+yql_ghost: https://query.yahooapis.com/v1/public/yql?q=select%20title%2C%20link%2C%20pubDate%2C%20category%20from%20rss%20where%20url%3D%22http%3A%2F%2Fblog.caepa.org%2Frss%2F%22%20limit%207&format=json&diagnostics=true&callback=recent_posts
+
+menu: true
+menu_sort: 0
+layout: default
+---
+<header class="slider">
+  <ul class="slides">
+    <li>
+      <img src="assets/img/headers/sunset-869710_1920.jpg"><!-- random image -->
+      <div class="caption left-align">
+        <h1>{{ site.name }}</h1>
+        <blockquote>
+          <h5 class="grey-text text-lighten-3 light" align="justify">{{ site.statement }}</h5>
+        </blockquote>
+      </div>
+    </li>
+  </ul>
+  <!-- add in slides loop >> site.data.slides -->
+</header>
+<!-- END header -->
+
+<main id="index-wrapper" class="content" role="main" align="justify">
+  
+<section class="section grey lighten-4">
+  <div class="container center">
+    {% include mailchimp.html %}
+  </div>
+</section>
+  <!-- END mailchimp -->
+
+<div class="parallax-container valign-wrapper">
+  <div class="container">
+    <blockquote class="center">
+      <h5 class="grey-text text-lighten-3 light" align="justify">{{ site.mission }}</h5>
+      <em class="light right">-- Mission Statement</em>
+    </blockquote>
+  </div>
+  <div class="parallax">
+    <img alt="" src="https://unsplash.it/1024/758/?blur">
+  </div>
+</div>
+  <!-- paralax break -->
+
+<section class="section">
+  <div class="row">
+      <h2 class="center-align">What is Adult Education?</h2>
+      <article class="col s12 m4 offset-m1 center-align">
+        % for faq in site.data.faqs %
+        <div class="card small hoverable waves-effect waves-dark">
+          <a href="{{ faq.url }}">
+            <div class="card-image valign-wrapper blue" style="height:66%">
+              <i class="small material-icons white-text tooltipped" data-position="left" data-tooltip="Visit {{ faq.title }}" style="position:absolute; right:0">launch</i>
+              <i class="container large material-icons grey-text text-lighten-2">info_outline{{ faq.icon}}</i>
+              <span class="card-title truncate">Fact Sheets{{ faq.title }}</span>
+            </div>
+            <div class="card-content grey-text text-darken-4">
+                <p class="light" align="justify">Lorem ipsum dolor sit amet, ad est erant impedit adolescens, eam ne dicta soleat adversarium. Ut dico eripuit usu. Eros putent regione ex usu, agam volutpat mnesarchum cu qui, cu..{{ faq.tagline  | truncate: 100, '...'}}</p>
+            </div>
+          </a>
+        </div>
+        % endfor %
+      </article>
+      <!-- END card -->
+      <article class="col s12 m6">
+        <ul class="collapsible popout" data-collapsible="accordion">
+          % for XXX in site.data.faqs %
+          <li>
+            <div class="collapsible-header"><i class="material-icons">info_outline</i>First</div>
+            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+          </li>
+          <li>
+            <div class="collapsible-header"><i class="material-icons">info_outline</i>Second</div>
+            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+          </li>
+          <li>
+            <div class="collapsible-header"><i class="material-icons">info_outline</i>Third</div>
+            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+          </li>
+          <li>
+            <div class="collapsible-header"><i class="material-icons">info_outline</i>Fourth</div>
+            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+          </li>
+          <li>
+            <div class="collapsible-header"><i class="material-icons">info_outline</i>Fifth</div>
+            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+          </li>
+          % endfor %
+        </ul>
+      </article>
+    </div>
+</section>
+  <!-- END faq -->
+
+<!-- paralax break -->
+{% include paralax.html %}
+
+<!-- non-card layout
+<section class="section">
+  <div class="row">
+    {% for committee in site.committees %}
+    <article class="col s12 l4 center">
+      <i class="large material-icons grey-text">{{ committee.icon }}</i>
+      <br />
+      <span class="title"><a href="{{ committee.url}}">{{ committee.name }}</a></span>
+      <p class="light" align="justify">{{ committee.tagline }}</p>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+<!-- committees -->
+
+<section class="section">
+  <div class="row">
+    <h2 class="center">Our Standing Committees</h2>
+
+    {% for committee in site.committees %}
+    {% if committee.title != "Executive" %}
+    <article class="col s12 m4 center-align">
+      <div class="card small hoverable waves-effect waves-dark">
+        <a href="{{ committee.url | prepend: site.baseurl }}">
+          <div class="card-image valign-wrapper blue" style="height:66%">
+            <i class="small material-icons white-text tooltipped" data-position="left" data-tooltip="Visit {{ committee.title }}" style="position:absolute; right:0">launch</i>
+            <i class="container large material-icons grey-text text-lighten-2">{{ committee.icon }}</i>
+            <span class="card-title truncate">{{ committee.title }}</span>
+          </div>
+          <div class="card-content grey-text text-darken-4">
+              <p class="light" align="justify">{{ committee.tagline  | truncate: 100, '...'}}</p>
+          </div>
+        </a>
+      </div>
+    </article>
+
+    {% endif %}
+    {% endfor %}
+  </div>
+</section>
+  <!-- END committees -->
+
+<!-- paralax break -->
+{% include paralax.html %}
+
+<section class="section" id="test2">
+  <div class="row">
+    <h2 class="center-align">Recent Posts</h2>
+    <article class="col s12 m4 push-m7 center-align">
+      <div class="card small hoverable waves-effect waves-dark">
+        <a href="{{ site.ghost_url }}">
+          <div class="card-image valign-wrapper blue" style="height:66%">
+            <i class="small material-icons white-text tooltipped" data-position="left" data-tooltip="Visit {{ site.ghost_title }}" style="position:absolute; right:0">launch</i>
+            <i class="container large material-icons grey-text text-lighten-2">{{ site.ghost_icon }}</i>
+            <span class="card-title truncate">{{ site.ghost_title }}</span>
+          </div>
+          <div class="card-content grey-text text-darken-4">
+              <p class="light" align="justify">{{ site.ghost_tagline  | truncate: 100, '...'}}</p>
+          </div>
+        </a>
+      </div>
+    </article>
+    <article class="col s12 m6 pull-m4 offset-m1">
+      <div id='blog.caepa' class="collection hoverable">
+
+        {% include yql_ghost-list.html %}
+
+      </div>
+    </article>    
+  </div>
+</section>
+  <!-- END recent posts -->
+  
+<!-- paralax break -->
+{% include paralax.html %}
+  
+</main>
+<!-- END main content -->
+
+<!-- Modal Structure -->
+<div id="building" class="modal modal-fixed-footer">
+  <div class="modal-content" align="justify">
+    <ul class="collection">
+      <li class="collection-item avatar">
+        <i class="left material-icons circle amber">info_outline</i>
+        <span class="title"><strong>Note</strong></span>
+        <p>We are still building the site, but have a look around theres a lot of good things to see, and a lot of things that need to be filled in. Check back soon to watch the updates.</p>
+      </li>
+      <li class="collection-item avatar" href="mailto:fuller_j@cde.state.co.us">
+        <i class="left material-icons circle teal">mail_outline</i>
+        <span class="title"><strong>Contact</strong></span>
+        <p>If you encounter anything strange, broken, or have suggestions, please contact jason at <strong><a href="admin@caepa.org">admin@caepa.org</a></strong></p><p>Thank You</p>
+      </li>
+    </ul>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Got It!</a>
+  </div>
+</div><!-- END programs modal -->

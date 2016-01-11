@@ -1,0 +1,29 @@
+<script type='text/javascript'>
+  // Parses returned response and extracts
+  // the title, links, and publish date of each item
+  function recent_posts(o){
+    var items = o.query.results.item;
+    var output = '';
+    var no_items=items.length;
+    for(var i = 0; i < no_items; i++){
+      var title = items[i].title;
+      var link = items[i].link;
+      var date = items[i].pubDate;
+      var category = items[i].category;
+      var description = items[i].description;
+      output += "<div class='divider'></div><article id='blog.caepa' class='col s6 m3 center'><a class='collection-item' href='" + link + "'><h4 class='title truncate'>" + title + "</h4></a><strong>" + date + "&emsp;|&emsp;" + category + "</strong>" + description + "<div class='divider'></div></article>";
+    }
+    // Place news stories in div tag
+    document.getElementById('blog.caepa').innerHTML = output;
+  }
+</script>
+
+<script src="{{ page.yql_ghost }}">
+  // https://developer.yahoo.com/yql/console/
+  // select title, link, pubDate from rss where url="http://blog.caepa.org/rss/" limit 7
+  // select title, link, pubDate, description, category from rss where url='http://blog.caepa.org/rss/' and category='Advocacy' limit 3
+  // select title, link, pubDate, category from rss where url='http://blog.caepa.org/rss/' and category='Newsletter' limit 3
+  // select title, link, pubDate, description, category from rss where url='http://blog.caepa.org/rss/' and category='Professional Development' limit 3
+  // select title, link, pubDate, description, category from rss where url='http://blog.caepa.org/rss/' and category='Executive News' limit 3
+  // select title, link, pubDate, description, category from rss where url='http://blog.caepa.org/rss/' and category='Weekly Update' limit 3
+</script>
