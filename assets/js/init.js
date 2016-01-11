@@ -48,10 +48,10 @@
     });
     // Models
     $('.modal-trigger').leanModal();
-    if (document.documentURI === 'http://champa720.github.io/EXP/programs.html') {
+    if (document.documentURI === 'http://champa720.github.io/EXP/programs.html/') {
       $('#programs').openModal();
     }
-    if (document.documentURI === 'http://champa720.github.io/EXP') {
+    if (document.documentURI === 'http://champa720.github.io/EXP/') {
       $('#building').openModal();
     }
     // Parallax
